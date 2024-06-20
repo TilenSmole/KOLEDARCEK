@@ -1,0 +1,13 @@
+Prazniki so zapisani v formatu dan/mesec/*, v kolikor * ni podane, to pomeni, da je praznik ponavljajoč
+15/8
+25/12
+15/5/2025
+26/12
+8/2
+1/1
+2/1/2009
+2/1/2010
+2/1/2011
+2/1/2012
+1/6/2002
+

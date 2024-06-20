@@ -1,0 +1,35 @@
+
+
+td, tr {
+    padding: 10px; 
+    text-align: center; 
+    vertical-align: middle; 
+    border: 1px solid #ccc; 
+    font-size: 20px;
+}
+
+body{
+    background-color: #ede7dc;
+}
+
+.sundayCell{
+    color: red;
+}
+
+#divYear, #divDate, #divMonth, table, h1, #error{
+    margin: 0 auto; /* Center the table */
+    text-align: center; 
+    
+}
+
+table {
+    background-color: #dcd2cc;
+    width: 70%;
+    margin-top: 100px;
+}
+h1{
+    margin: 25px 0 25px 0;
+}
+
+.holidayCell {
+    color: #065ed2 ;}
