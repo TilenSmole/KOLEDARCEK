@@ -97,8 +97,8 @@
         selectedDate.addEventListener("input", function () {
             let wholeText = this.value.split("/");
             let day = Number(wholeText[0]);
-            let month = Number(wholeText[1]);
-            let year = Number(wholeText[2]);
+            month = Number(wholeText[1]);
+            year = Number(wholeText[2]);
 
             let date = new Date(year, month - 1, day);
 
