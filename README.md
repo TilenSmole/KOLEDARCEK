@@ -1,4 +1,4 @@
-Ta aplikacija prikazuje enostaven grafični koledarček, kjer lahko spreminjate prikazane mesece in leta ter vnašate poljubne datume za hitro navigacijo. Nedelje so vizualno poudarjene, prazniki pa so označeni na poseben način za lažjo prepoznavnost.
+Ta aplikacija prikazuje enostaven grafični koledarček, kjer lahko spreminjate prikazane mesece in leta ter vnašate poljubne datume za hitro navigacijo. Nedelje so predstavljene z rdečo, prazniki pa so označeni z modro.
 
 Pred odprtjem aplikacije program samodejno prebere datoteko s seznamom praznikov, ki vključuje tudi informacije o tem, ali se ponavljajo.
 
