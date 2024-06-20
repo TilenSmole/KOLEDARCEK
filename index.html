@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <script src="LOGIC/neki.js"></script>
+    <script src="logic.js"></script>
     <link rel="stylesheet" href="design.css">
 
 </head>
@@ -13,9 +13,10 @@
 <body>
 
     <h1>DOBODOŠLI NA KOLEDARČKU!</h1>
-    <p></p>
+    <p>Z modro so označeni prazniki, medtem ko rdeča prikazuje vikende</p>
+
     <div id="divMonth">
-        <label for="months">Vpiši želeni mesec:</label>
+        <label for="months">Izberi želeni mesec:</label>
         <select name="months" id="months">
             <option value="1">januar</option>
             <option value="2">februar</option>
@@ -35,7 +36,6 @@
     <div id="divYear">
         <label for="year">Vpiši želeno leto:</label>
         <input type="text" id="year">
-
     </div>
 
     <div id="divDate"> <label for="fullDate">Vpiši želeni datum:</label>
@@ -46,31 +46,27 @@
 
 
 
-    <table id="displayMonth">
-
-
-    </table>
-
-
-
-
+    <table id="displayMonth"></table>
 
 
     <script>
         const d = new Date();
         const selectedMonth = document.getElementById("months");
-        selectedMonth.value = d.getMonth() + 1;
-        updateOutput(d.getMonth() + 1, d.getFullYear());
-
+        var error = document.getElementById("error");
         let selectedYear = document.getElementById("year");
+        let selectedDate = document.getElementById("fullDate");
+        //nastavimo spremenljivke (mesec, leto)
+        updateOutput(d.getMonth() + 1, d.getFullYear()); 
+        selectedMonth.value = d.getMonth() + 1;
         selectedYear.value = d.getFullYear()
 
         var year = selectedYear.value
         var month = selectedMonth.value
 
-        let selectedDate = document.getElementById("fullDate");
         selectedDate.value = d.getDate() + "/" + month + "/" + year
 
+
+        //dinamično spreminanje meseca
         selectedMonth.addEventListener("change", function () {
             updateOutput(this.value, year);
             month = this.value
@@ -79,10 +75,9 @@
 
         });
 
-        var error = document.getElementById("error");
 
 
-
+        //dinamično spreminanje letnice
         selectedYear.addEventListener("input", function () {
             if (Number(this.value)) {
                 updateOutput(month, this.value);
@@ -98,7 +93,7 @@
         });
 
 
-
+        //dinamično spreminanje celotnega datuma
         selectedDate.addEventListener("input", function () {
             let wholeText = this.value.split("/");
             let day = parseInt(wholeText[0], 10);
@@ -106,7 +101,6 @@
             let year = parseInt(wholeText[2], 10);
 
             let date = new Date(year, month - 1, day);
-            console.log(date);
 
             if (!isNaN(date.getTime()) && date.getDate() === day && date.getMonth() === month - 1 && Number(year)) {
                 updateOutput(month, year);

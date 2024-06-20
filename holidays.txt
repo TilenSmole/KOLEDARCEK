@@ -10,4 +10,5 @@ Prazniki so zapisani v formatu dan/mesec/*, v kolikor * ni podane, to pomeni, da
 2/1/2011
 2/1/2012
 1/6/2002
+25/6
 

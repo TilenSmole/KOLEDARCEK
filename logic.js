@@ -1,15 +1,16 @@
 var holidays = []
+//ob zagonu strani prebere datoteko s praznikami
 document.addEventListener('DOMContentLoaded', function () {
     fetch('holidays.txt')
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
+                throw new Error('Napaka na omrežju ' + response.statusText);
             }
             return response.text();
         })
         .then(data => {
             holidays = data.split('\n')
-            updateOutput(new Date().getMonth() + 1, new Date().getFullYear()); // Update calendar after loading holidays
+            updateOutput(new Date().getMonth() + 1, new Date().getFullYear()); //posodobi koledar, ker se to naloži po že naložitvi koledarja
 
         })
         .catch(error => {
@@ -19,15 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
+//funkcija naloži datume za izbrani mesec in leto
 function updateOutput(month, year) {
     const getDaysInMonth = (year, month) => new Date(year, month, 0).getDate();
     const days = getDaysInMonth(year, month);
-
     let displayMonth = document.getElementById("displayMonth");
     displayMonth.innerHTML = '';
-
-
     displayMonth.appendChild(createTableHeader());
     let newRow = document.createElement("tr");
     var index = 1
@@ -44,7 +42,6 @@ function updateOutput(month, year) {
             index++;
         }
 
-
         if (day == 0) {
             while (index < 7) {
                 let emptyCell = document.createElement("td");
@@ -60,14 +57,8 @@ function updateOutput(month, year) {
 
         if (day == 0)
             newCell.classList.add("sundayCell")
-
-        if (checkHoliday(d)) {
-            console.log('applying');
+        if (checkHoliday(d))
             newCell.classList.add("holidayCell")
-
-
-        }
-        console.log(checkHoliday(d));
 
         if (index % 7 === 0) {
             displayMonth.appendChild(newRow);
@@ -83,7 +74,7 @@ function updateOutput(month, year) {
 
 }
 
-
+//funkcija ustvari header v tabeli
 function createTableHeader() {
     let headerRow = document.createElement("tr");
 
@@ -98,29 +89,26 @@ function createTableHeader() {
     return headerRow;
 }
 
-
+//funkcija preverja, ali je dani dan slučajno praznik
 function checkHoliday(d) {
     var isHoliday = false;
     try {
         holidays.forEach(holiday => {
             var holidaySplit = holiday.split("/");
-            if (holidaySplit.length === 2) { // For dates without year (day/month)
-                let holidayDay = Number(holidaySplit[0].trim());
-                let holidayMonth = Number(holidaySplit[1].trim());
-                if (d.getDate() === holidayDay && (d.getMonth() + 1) === holidayMonth) {
+            let holidayDay = Number(holidaySplit[0].trim());
+            let holidayMonth = Number(holidaySplit[1].trim());
+            if (holidaySplit.length === 2) { //za praznike, ki se ne ponavljajo
+                if (d.getDate() === holidayDay && (d.getMonth() + 1) === holidayMonth) 
                     isHoliday = true;
-                }
-            } else if (holidaySplit.length === 3) { // For dates with year (day/month/year)
-                let holidayDay = Number(holidaySplit[0].trim());
-                let holidayMonth = Number(holidaySplit[1].trim());
+                
+            } else if (holidaySplit.length === 3) {  //za praznike, ki se  ponavljajo
                 let holidayYear = Number(holidaySplit[2].trim());
-                if (d.getDate() === holidayDay && (d.getMonth() + 1) === holidayMonth && d.getFullYear() === holidayYear) {
+                if (d.getDate() === holidayDay && (d.getMonth() + 1) === holidayMonth && d.getFullYear() === holidayYear) 
                     isHoliday = true;
-                }
+                
             }
         });
     } catch (error) {
-        console.log( error);
         error.textContent = "Interna napaka!";
     }
     return isHoliday;
