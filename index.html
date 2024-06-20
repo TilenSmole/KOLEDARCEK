@@ -13,7 +13,7 @@
 <body>
 
     <h1>DOBODOŠLI NA KOLEDARČKU!</h1>
-    <p>Z modro so označeni prazniki, medtem ko rdeča prikazuje vikende</p>
+    <p>Z modro so označeni prazniki, medtem ko rdeča prikazuje nedelje</p>
 
     <div id="divMonth">
         <label for="months">Izberi želeni mesec:</label>
@@ -34,11 +34,11 @@
     </div>
 
     <div id="divYear">
-        <label for="year">Vpiši želeno leto:</label>
+        <label for="year">Vnesi želeno leto:</label>
         <input type="text" id="year">
     </div>
 
-    <div id="divDate"> <label for="fullDate">Vpiši želeni datum:</label>
+    <div id="divDate"> <label for="fullDate">Vnesi želeni datum:</label>
         <input type="text" id="fullDate" placeholder="dan/mesec/leto">
     </div>
 
@@ -87,7 +87,7 @@
                 selectedDate.value = d.getDate() + "/" + month + "/" + year
             }
             else {
-                error.textContent = "Vpiši veljavno leto!"
+                error.textContent = "Vnesi veljavno leto!"
 
             }
         });
@@ -96,9 +96,9 @@
         //dinamično spreminanje celotnega datuma
         selectedDate.addEventListener("input", function () {
             let wholeText = this.value.split("/");
-            let day = parseInt(wholeText[0], 10);
-            let month = parseInt(wholeText[1], 10);
-            let year = parseInt(wholeText[2], 10);
+            let day = Number(wholeText[0]);
+            let month = Number(wholeText[1]);
+            let year = Number(wholeText[2]);
 
             let date = new Date(year, month - 1, day);
 
@@ -108,7 +108,7 @@
                 selectedYear.value = year;
                 selectedMonth.value = month;
             } else {
-                error.textContent = "Vpiši veljaven datum!";
+                error.textContent = "Vnesi veljaven datum!";
             }
         });
 
