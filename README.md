@@ -8,17 +8,14 @@ Pred odprtjem aplikacije program samodejno prebere datoteko s seznamom praznikov
 
 Za začetek uporabe aplikacije sledite spodnjim korakom:
 
-    Klonirajte repozitorij z naslednjim ukazom:
+Klonirajte repozitorij z naslednjim ukazom:
 
-    bash
-
-git clone https://github.com/randomtuser/KOLEDARCEK.git
+    git clone https://github.com/randomtuser/KOLEDARCEK.git
 
 Po kloniranju se premaknite v ustvarjeno mapo:
 
-bash
 
-cd KOLEDARCEK
+    cd KOLEDARCEK
 
 Zaženite "live server", da odprete aplikacijo v brskalniku.
 
